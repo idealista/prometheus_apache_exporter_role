@@ -1,0 +1,8 @@
+---
+
+- name: APACHE_EXPORTER | Configuring service
+  systemd:
+    name: apache_exporter
+    state: "{{ apache_exporter_service_state }}"
+    enabled: "{{ apache_exporter_service_enabled }}"
+    daemon_reload: yes

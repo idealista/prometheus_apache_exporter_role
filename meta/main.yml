@@ -1,0 +1,15 @@
+---
+
+galaxy_info:
+  company: Idealista S.A.
+  description: Prometheus Apache exporter
+  min_ansible_version: 2.3
+  license: Apache 2.0
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+  categories:
+    - monitoring
+    - prometheus
+    - apache
