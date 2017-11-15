@@ -1,0 +1,7 @@
+---
+
+- name: restart apache_exporter
+  systemd:
+    name: apache_exporter
+    state: restarted
+  when: apache_exporter_service_state != 'stopped'

@@ -1,0 +1,21 @@
+---
+
+- name: APACHE_EXPORTER | Check
+  include: check.yml
+  tags:
+    - check
+
+- name: APACHE_EXPORTER | Install
+  include: install.yml
+  tags:
+    - install
+
+- name: APACHE_EXPORTER | Configure
+  include: config.yml
+  tags:
+    - configure
+
+- name: APACHE_EXPORTER | Service
+  include: service.yml
+  tags:
+    - service

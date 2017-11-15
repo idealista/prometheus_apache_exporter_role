@@ -1,0 +1,14 @@
+{{ apache_exporter_log_path }}/*.log {
+  daily
+  sharedscripts
+  notifempty
+  missingok
+  rotate 7
+  size 500M
+  compress
+  delaycompress
+  create 664 {{ apache_exporter_user }} {{ apache_exporter_group }}
+  postrotate
+        [ ! -f /run/apache_exporter/apache_exporter.pid ] || /bin/systemctl restart apache_exporter.service
+  endscript
+}

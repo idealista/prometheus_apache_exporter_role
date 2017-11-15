@@ -1,0 +1,30 @@
+---
+## General
+apache_exporter_version: 0.5.0
+apache_exporter_release_system: linux-amd64
+
+# Set true to force the download and installation of the binary
+apache_exporter_force_reinstall: false
+
+## Service options
+
+# Owner
+apache_exporter_user: prometheus
+apache_exporter_group: prometheus
+
+# start on boot
+apache_exporter_service_enabled: True
+# current state: started, stopped
+apache_exporter_service_state: started
+
+# Files & Paths
+apache_exporter_install_path: /opt/apache_exporter
+apache_exporter_log_path: /var/log/apache_exporter
+apache_exporter_log_file: "{{ apache_exporter_log_path }}/apache_exporter.log"
+apache_exporter_error_log_file: "{{ apache_exporter_log_path }}/apache_exporter_error.log"
+
+apache_exporter_option_insecure: "false"
+apache_exporter_option_log_level: info # [debug, info, warn, error, fatal, panic].
+apache_exporter_option_scrape_uri: http://localhost/server-status?auto
+apache_exporter_option_telemetry_address: ":9117"
+apache_exporter_option_telemetry_endpoint: /metrics
