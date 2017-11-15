@@ -31,9 +31,9 @@ For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant
 Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
-- src: idealista.prometheus_apache_exporter-role
+- src: idealista.apache_exporter-role
   version: 1.0.0
-  name: prometheus_apache_exporter
+  name: apache_exporter
 ```
 
 Install the role with ansible-galaxy command:
@@ -48,7 +48,7 @@ Use in a playbook:
 ---
 - hosts: someserver
   roles:
-    - role: prometheus_redis_exporter
+    - role: apache_exporter
 ```
 
 ## Usage
@@ -67,7 +67,7 @@ molecule test
 
 ## Versioning
 
-For the versions available, see the [tags on this repository](https://github.com/idealista/prometheus_redis_exporter-role/tags).
+For the versions available, see the [tags on this repository](https://github.com/idealista/apache_exporter-role/tags).
 
 Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGELOG.md) file.
 
