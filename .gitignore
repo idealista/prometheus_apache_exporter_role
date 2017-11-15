@@ -1,4 +1,4 @@
-tests/playbook.retry
+*.retry
 tests/.cache
 .molecule
 .vagrant
