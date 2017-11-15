@@ -1,0 +1,20 @@
+---
+
+- name: APACHE_EXPORTER | Check if Apache exporter already installed
+  shell: '[ -x "$(command -v apache_exporter)" ] && echo "True" || echo "False"'
+  register: apache_exporter_is_installed_command
+  changed_when: false
+
+- name: APACHE_EXPORTER | Apache exporter installed version
+  shell: 'apache_exporter -version | grep "apache_exporter, version" | cut -d" " -f3'
+  register: apache_exporter_current_installed_version
+  when: apache_exporter_is_installed_command
+  changed_when: false
+
+- name: APACHE_EXPORTER | Set installed fact
+  set_fact:
+    apache_exporter_is_installed: "{{ apache_exporter_is_installed_command.stdout }}"
+
+- name: APACHE_EXPORTER | Set same version fact
+  set_fact:
+    apache_exporter_is_different_version: "{{ apache_exporter_current_installed_version }} != {{ apache_exporter_version }}"
