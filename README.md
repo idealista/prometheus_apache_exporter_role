@@ -1,4 +1,5 @@
 ![Logo](logo.gif)
+[![Build Status](https://travis-ci.org/idealista/apache_exporter-role.svg?branch=master)](https://travis-ci.org/idealista/apache_exporter-role)
 
 # Prometheus Apache Exporter Ansible role
 
