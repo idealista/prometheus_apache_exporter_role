@@ -1,0 +1,19 @@
+[Unit]
+Description=prometheus apache exporter
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User={{ apache_exporter_user }}
+Group={{ apache_exporter_group }}
+RuntimeDirectory=apache_exporter
+
+ExecStart=/bin/sh -c '{{ apache_exporter_install_path }}/apache_exporter -scrape_uri="{{ apache_exporter_option_scrape_uri }}" -insecure={{ apache_exporter_option_insecure }} -telemetry.address="{{ apache_exporter_option_telemetry_address }}" -telemetry.endpoint="{{ apache_exporter_option_telemetry_endpoint }}" >> {{ apache_exporter_log_file }} 2>> {{ apache_exporter_error_log_file }}'
+
+ExecStartPost=/bin/sh -c "echo $MAINPID > /run/apache_exporter/apache_exporter.pid"
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/run/apache_exporter/apache_exporter.pid
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target

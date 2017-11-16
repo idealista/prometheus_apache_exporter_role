@@ -1,0 +1,5 @@
+---
+
+apache_exporter_release_name: "apache_exporter-{{ apache_exporter_version }}.{{ apache_exporter_release_system }}"
+apache_exporter_package: "{{ apache_exporter_release_name}}.tar.gz"
+apache_exporter_url: "https://github.com/Lusitaniae/apache_exporter/releases/download/v{{ apache_exporter_version }}/{{ apache_exporter_package }}"

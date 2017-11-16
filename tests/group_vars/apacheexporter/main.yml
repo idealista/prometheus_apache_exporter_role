@@ -1,0 +1,6 @@
+---
+
+apache_exporter_option_scrape_uri: http://prom:prom@localhost/server-status?auto
+apache_sites_enabled:
+  - status-enabled-site
+apache_sites_available_template_path: "{{ playbook_dir }}/templates/example-site"

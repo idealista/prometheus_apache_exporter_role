@@ -1,0 +1,15 @@
+---
+- hosts: all
+  post_tasks:
+    - name: copy apache passwd sample
+      copy:
+        src: config/sample/apachepasswd
+        dest: /etc/apache2/conf/apachepasswd
+        owner: "{{ apache_user }}"
+        group: "{{ apache_user }}"
+    - name: install apache utils for htpasswd
+      apt:
+        package: apache2-utils
+  roles:
+    - apache_httpd
+    - apache_exporter-role
