@@ -1,4 +1,4 @@
-![Logo](logo.gif)
+![Logo](https://raw.githubusercontent.com/idealista/apache_exporter-role/master/logo.gif)
 [![Build Status](https://travis-ci.org/idealista/apache_exporter-role.svg?branch=master)](https://travis-ci.org/idealista/apache_exporter-role)
 
 # Prometheus Apache Exporter Ansible role
@@ -64,7 +64,9 @@ molecule test
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.2.1.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.3.1.0-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-1.25.0-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.5-green.svg)
 
 ## Versioning
 
