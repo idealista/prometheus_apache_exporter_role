@@ -12,4 +12,4 @@
         package: apache2-utils
   roles:
     - apache_httpd
-    - apache_exporter-role
+    - prometheus_apache_exporter-role
