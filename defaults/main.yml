@@ -28,3 +28,17 @@ apache_exporter_option_log_level: info # [debug, info, warn, error, fatal, panic
 apache_exporter_option_scrape_uri: http://localhost/server-status?auto
 apache_exporter_option_telemetry_address: ":9117"
 apache_exporter_option_telemetry_endpoint: /metrics
+
+apache_exporter_command_args_stdlib:
+  - -scrape_uri={{ apache_exporter_option_scrape_uri }}
+  - -insecure={{ apache_exporter_option_insecure }}
+  - -telemetry.address={{ apache_exporter_option_telemetry_address }}
+  - -telemetry.endpoint={{ apache_exporter_option_telemetry_endpoint }}
+
+apache_exporter_command_args_kingpin:
+  - --scrape_uri={{ apache_exporter_option_scrape_uri }}
+  - "{{ apache_exporter_option_insecure | bool | ternary('--insecure', '') }}"
+  - --telemetry.address={{ apache_exporter_option_telemetry_address }}
+  - --telemetry.endpoint={{ apache_exporter_option_telemetry_endpoint }}
+
+apache_exporter_command_args: "{{ apache_exporter_version is version('0.8.0', '>=') | ternary(apache_exporter_command_args_kingpin, apache_exporter_command_args_stdlib) }}"
