@@ -69,6 +69,8 @@ $ pipenv sync
 ```
 For more information read the [pipenv docs](https://pipenv-fork.readthedocs.io/en/latest/).
 
+### Testing
+
 ```sh
 $ pipenv run molecule test 
 ```
