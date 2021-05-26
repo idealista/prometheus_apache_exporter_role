@@ -2,11 +2,16 @@
 - name: APACHE_EXPORTER | Ensure apache_exporter group
   group:
     name: "{{ apache_exporter_group }}"
+    system: true
+    state: present
 
 - name: APACHE_EXPORTER | Ensure apache_exporter user
   user:
     name: "{{ apache_exporter_user }}"
     group: "{{ apache_exporter_group }}"
+    system: true
+    shell: /usr/sbin/nologin
+    createhome: false
 
 - name: APACHE_EXPORTER | Ensure skeleton paths
   file:
@@ -17,7 +22,17 @@
     mode: 0755
   with_items:
     - "{{ apache_exporter_install_path }}"
+
+- name: APACHE_EXPORTER | Ensure skeleton log paths
+  file:
+    path: "{{ item }}"
+    owner: "{{ apache_exporter_user }}"
+    group: "{{ apache_exporter_group }}"
+    state: directory
+    mode: 0755
+  with_items:
     - "{{ apache_exporter_log_path }}"
+  when: apache_exporter_log_path is defined
 
 - name: APACHE_EXPORTER | Download and extract package
   unarchive:
@@ -28,18 +43,11 @@
     mode: 0755
     owner: "{{ apache_exporter_user }}"
     group: "{{ apache_exporter_group }}"
-  when: apache_exporter_is_installed == false or apache_exporter_is_different_version == true
+  when: apache_exporter_is_installed is false or apache_exporter_is_different_version is true
 
 - name: APACHE_EXPORTER | Link binary
   file:
-    src: "{{ apache_exporter_install_path }}/apache_exporter"
-    dest: "/usr/bin/apache_exporter"
+    src: "{{ apache_exporter_install_path }}/{{ apache_exporter_exec_name }}"
+    dest: "/usr/bin/{{ apache_exporter_exec_name }}"
     state: link
-  when: apache_exporter_is_installed == false or apache_exporter_is_different_version == true
-
-- name: APACHE_EXPORTER | Copy Daemon script
-  template:
-    src: apache_exporter.service.j2
-    dest: /etc/systemd/system/apache_exporter.service
-    mode: 0644
-  notify: restart apache_exporter
+  when: apache_exporter_is_installed is false or apache_exporter_is_different_version is true

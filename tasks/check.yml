@@ -6,8 +6,10 @@
   changed_when: false
 
 - name: APACHE_EXPORTER | Apache exporter installed version
-  shell: 'apache_exporter -version | grep "apache_exporter, version" | cut -d" " -f3'
+  shell: 'apache_exporter --version | grep "apache_exporter, version" | cut -d" " -f3'
   register: apache_exporter_current_installed_version
+  args:
+    executable: /bin/bash
   when: apache_exporter_is_installed_command
   changed_when: false
 
