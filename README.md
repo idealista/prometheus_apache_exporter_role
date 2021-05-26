@@ -1,9 +1,13 @@
-![Logo](https://raw.githubusercontent.com/idealista/apache_exporter-role/master/logo.gif)
-[![Build Status](https://travis-ci.org/idealista/apache_exporter-role.svg?branch=master)](https://travis-ci.org/idealista/apache_exporter-role)
+![Logo](https://raw.githubusercontent.com/idealista/prometheus_apache_exporter_role/master/logo.gif)
+[![Build Status](https://travis-ci.org/idealista/prometheus_apache_exporter_role.svg?branch=master)](https://travis-ci.org/idealista/prometheus_apache_exporter_role)
 
 # Prometheus Apache Exporter Ansible role
 
-This ansible role installs a Prometheus Apache Exporter in a debian environment.
+This ansible role installs a Prometheus Apache Exporter in a debian environment. It has been tested for the following Debian versions:
+* Stretch
+* Buster
+
+This role has been generated using the [cookiecutter](https://github.com/cookiecutter/cookiecutter) tool, you can generate a similar role that fits your needs using the this [cookiecutter template](https://github.com/idealista/cookiecutter-ansible-role).
 
 - [Getting Started](#getting-started)
 	- [Prerequisities](#prerequisities)
@@ -21,18 +25,18 @@ This ansible role installs a Prometheus Apache Exporter in a debian environment.
 These instructions will get you a copy of the role for your ansible playbook. Once launched, it will install an [Prometheus Apache Exporter](https://github.com/Lusitaniae/apache_exporter) server in a Debian system.
 
 ### Prerequisities
+Ansible > 2.8.0 version installed.
 
-Ansible 2.3.x.x version installed.
-Inventory destination should be a Debian environment.
+Molecule 3.3.x version installed.
 
-For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Vagrant](https://www.vagrantup.com/) as driver (with [landrush](https://github.com/vagrant-landrush/landrush) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
+For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Docker](https://www.docker.com/) as driver and [Goss](https://github.com/aelsabbahy/goss) as verifier.
 
 ### Installing
 
 Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
-- src: idealista.apache_exporter-role
+- src: idealista.prometheus_apache_exporter_role
   version: 1.0.0
   name: apache_exporter
 ```
@@ -58,19 +62,28 @@ Look to the [defaults](defaults/main.yml) properties file to see the possible co
 
 ## Testing
 
+## Install dependencies
+
+```sh
+$ pipenv sync
 ```
-molecule test
+For more information read the [pipenv docs](https://pipenv-fork.readthedocs.io/en/latest/).
+
+```sh
+$ pipenv run molecule test 
+```
+Note: if you want to add colorized output (as previous versions of molecule), you must [set these environment variables](https://www.jeffgeerling.com/blog/2020/getting-colorized-output-molecule-and-ansible-on-github-actions-ci):
 ```
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.3.1.0-green.svg)
-![Molecule](https://img.shields.io/badge/molecule-1.25.0-green.svg)
-![Goss](https://img.shields.io/badge/goss-0.3.5-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-4.0.0-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-3.3.2-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)
 
 ## Versioning
 
-For the versions available, see the [tags on this repository](https://github.com/idealista/apache_exporter-role/tags).
+For the versions available, see the [tags on this repository](https://github.com/idealista/prometheus_apache_exporter_role/tags).
 
 Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGELOG.md) file.
 
