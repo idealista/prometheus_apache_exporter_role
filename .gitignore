@@ -1,5 +1,14 @@
-*.retry
+ 
+tests/playbook.retry
 tests/.cache
+__pycache__
+.pytest_cache
 .molecule
-.vagrant
 .cache
+
+*.iml
+.idea
+.project
+
+*.pyc
+**/.vscode

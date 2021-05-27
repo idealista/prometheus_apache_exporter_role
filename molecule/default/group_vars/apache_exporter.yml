@@ -1,6 +1,10 @@
 ---
 
+apache_exporter_private_tmp: false
+
 apache_exporter_option_scrape_uri: http://prom:prom@localhost/server-status?auto
 apache_sites_enabled:
   - status-enabled-site
 apache_sites_available_template_path: "{{ playbook_dir }}/templates/example-site"
+apache_build_dir: /usr/src/build_apache
+apache_private_tmp: false

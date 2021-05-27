@@ -4,16 +4,20 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
+PrivateTmp={{ apache_exporter_private_tmp }}
 User={{ apache_exporter_user }}
 Group={{ apache_exporter_group }}
 RuntimeDirectory=apache_exporter
 
-ExecStart=/bin/sh -c '{{ apache_exporter_install_path }}/apache_exporter {{ apache_exporter_command_args | join(" ") }} >> {{ apache_exporter_log_file }} 2>> {{ apache_exporter_error_log_file }}'
+ExecStart={{ apache_exporter_install_path }}/apache_exporter {{ apache_exporter_command_args | join(" ") }}
 
-ExecStartPost=/bin/sh -c "echo $MAINPID > /run/apache_exporter/apache_exporter.pid"
 ExecReload=/bin/kill -HUP $MAINPID
+
+StandardOutput={{ apache_exporter_log_output }}
+StandardError={{ apache_exporter_log_output }}
 PIDFile=/run/apache_exporter/apache_exporter.pid
 KillSignal=SIGTERM
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
