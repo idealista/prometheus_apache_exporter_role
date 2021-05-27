@@ -37,7 +37,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
 - src: idealista.prometheus_apache_exporter_role
-  version: 1.0.0
+  version: 2.0.0
   name: apache_exporter
 ```
 
