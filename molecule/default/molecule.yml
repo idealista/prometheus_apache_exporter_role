@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+    yamllint .
+    ansible-lint .
+
+platforms:
+  - name: apacheexporter
+    groups:
+      - apache_exporter
+    image: ${MOLECULE_DISTRO:-debian:buster-slim}
+    privileged: false
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    tmpfs:
+      - '/tmp'
+      - '/run'
+      - '/run/lock'
+    command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
+provisioner:
+  name: ansible
+scenario:
+  name: default
+verifier:
+  name: ansible

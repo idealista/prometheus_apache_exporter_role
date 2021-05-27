@@ -3,19 +3,19 @@
 - name: APACHE_EXPORTER | Check
   include: check.yml
   tags:
-    - check
+    - apache_exporter_check
 
 - name: APACHE_EXPORTER | Install
   include: install.yml
   tags:
-    - install
+    - apache_exporter_install
 
 - name: APACHE_EXPORTER | Configure
   include: config.yml
   tags:
-    - configure
+    - apache_exporter_configure
 
 - name: APACHE_EXPORTER | Service
   include: service.yml
   tags:
-    - service
+    - apache_exporter_service

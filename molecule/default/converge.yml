@@ -3,7 +3,7 @@
   post_tasks:
     - name: copy apache passwd sample
       copy:
-        src: config/sample/apachepasswd
+        src: files/sample/apachepasswd
         dest: /etc/apache2/conf/apachepasswd
         owner: "{{ apache_user }}"
         group: "{{ apache_user }}"
@@ -12,4 +12,4 @@
         package: apache2-utils
   roles:
     - apache_httpd
-    - prometheus_apache_exporter-role
+    - prometheus_apache_exporter_role

@@ -1,0 +1,45 @@
+group:
+  {{ apache_exporter_group }}:
+    exists: true
+
+user:
+  {{ apache_exporter_user }}:
+    exists: true
+    groups:
+      - {{ apache_exporter_group }}
+
+file:
+  {{ apache_exporter_install_path }}:
+    owner: {{ apache_exporter_user }}
+    group: {{ apache_exporter_group }}
+    exists: true
+    filetype: directory
+{% if apache_exporter_log_path is defined %}
+   {{ apache_exporter_log_path }}:
+    owner: {{ apache_exporter_user }}
+    group: {{ apache_exporter_group }}
+    exists: true
+    filetype: directory
+  {{ apache_exporter_log_path }}/{{ apache_exporter_log_file }}:
+    owner: root
+    group: root
+    exists: true
+    filetype: file
+{% endif %}
+  /etc/systemd/system/apache_exporter.service:
+    exists: true
+port:
+  tcp6:{{ apache_exporter_port }}:
+    listening: true
+
+service:
+  apache_exporter:
+    enabled: true
+    running: true
+
+http:
+  http://localhost:{{ apache_exporter_port }}/metrics:
+    status: 200
+    body:
+      - "apache_up 1"
+      - "apache_accesses_total"

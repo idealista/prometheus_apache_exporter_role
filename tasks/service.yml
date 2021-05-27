@@ -1,5 +1,12 @@
 ---
 
+- name: APACHE_EXPORTER | Copy systemd unit file configuration
+  template:
+    src: "{{ apache_exporter_service_template_path }}"
+    dest: /etc/systemd/system/apache_exporter.service
+    mode: 0644
+  notify: restart apache_exporter
+
 - name: APACHE_EXPORTER | Configuring service
   systemd:
     name: apache_exporter

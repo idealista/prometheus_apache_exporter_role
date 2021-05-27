@@ -1,7 +1,12 @@
 ---
 ## General
-apache_exporter_version: 0.5.0
-apache_exporter_release_system: linux-amd64
+apache_exporter_version: 0.8.0
+apache_exporter_release_system: "linux-{{ apache_exporter_arch }}"
+
+# Package URL
+apache_exporter_release_name: "apache_exporter-{{ apache_exporter_version }}.{{ apache_exporter_release_system }}"
+apache_exporter_package: "{{ apache_exporter_release_name }}.tar.gz"
+apache_exporter_url: "https://github.com/Lusitaniae/apache_exporter/releases/download/v{{ apache_exporter_version }}/{{ apache_exporter_package }}"
 
 # Set true to force the download and installation of the binary
 apache_exporter_force_reinstall: false
@@ -11,6 +16,7 @@ apache_exporter_force_reinstall: false
 # Owner
 apache_exporter_user: prometheus
 apache_exporter_group: prometheus
+apache_exporter_private_tmp: true
 
 # start on boot
 apache_exporter_service_enabled: True
@@ -19,12 +25,33 @@ apache_exporter_service_state: started
 
 # Files & Paths
 apache_exporter_install_path: /opt/apache_exporter
-apache_exporter_log_path: /var/log/apache_exporter
-apache_exporter_log_file: "{{ apache_exporter_log_path }}/apache_exporter.log"
-apache_exporter_error_log_file: "{{ apache_exporter_log_path }}/apache_exporter_error.log"
+apache_exporter_exec_name: apache_exporter
+# apache_exporter_log_path: /var/log/apache_exporter
+# apache_exporter_log_file: apache_exporter.log
+apache_exporter_logrotate_enabled: false
+apache_exporter_log_output: journal
+# If you need output to a file, you can use file:{{ apache_exporter_log_path }}/{{ apache_exporter_log_file }}, append:..., rsyslog and other
+# options in Debian 10 (see https://www.freedesktop.org/software/systemd/man/systemd.exec.html)
 
+apache_exporter_service_template_path: apache_exporter.service.j2
+
+apache_exporter_port: 9117
 apache_exporter_option_insecure: "false"
-apache_exporter_option_log_level: info # [debug, info, warn, error, fatal, panic].
+apache_exporter_option_log_level: info  # [debug, info, warn, error, fatal, panic].
 apache_exporter_option_scrape_uri: http://localhost/server-status?auto
-apache_exporter_option_telemetry_address: ":9117"
+apache_exporter_option_telemetry_address: ":{{ apache_exporter_port }}"
 apache_exporter_option_telemetry_endpoint: /metrics
+
+apache_exporter_command_args_stdlib:
+  - -scrape_uri={{ apache_exporter_option_scrape_uri }}
+  - -insecure={{ apache_exporter_option_insecure }}
+  - -telemetry.address={{ apache_exporter_option_telemetry_address }}
+  - -telemetry.endpoint={{ apache_exporter_option_telemetry_endpoint }}
+
+apache_exporter_command_args_kingpin:
+  - --scrape_uri={{ apache_exporter_option_scrape_uri }}
+  - "{{ apache_exporter_option_insecure | bool | ternary('--insecure', '') }}"
+  - --telemetry.address={{ apache_exporter_option_telemetry_address }}
+  - --telemetry.endpoint={{ apache_exporter_option_telemetry_endpoint }}
+
+apache_exporter_command_args: "{{ apache_exporter_version is version('0.8.0', '>=') | ternary(apache_exporter_command_args_kingpin, apache_exporter_command_args_stdlib) }}"
