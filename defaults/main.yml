@@ -1,6 +1,6 @@
 ---
 ## General
-apache_exporter_version: 0.4.0
+apache_exporter_version: 0.8.0
 apache_exporter_release_system: "linux-{{ apache_exporter_arch }}"
 
 # Package URL
