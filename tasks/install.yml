@@ -43,11 +43,11 @@
     mode: 0755
     owner: "{{ apache_exporter_user }}"
     group: "{{ apache_exporter_group }}"
-  when: apache_exporter_is_installed is false or apache_exporter_is_different_version is true
+  when: not apache_exporter_is_installed or apache_exporter_is_different_version
 
 - name: APACHE_EXPORTER | Link binary
   file:
     src: "{{ apache_exporter_install_path }}/{{ apache_exporter_exec_name }}"
     dest: "/usr/bin/{{ apache_exporter_exec_name }}"
     state: link
-  when: apache_exporter_is_installed is false or apache_exporter_is_different_version is true
+  when: not apache_exporter_is_installed or apache_exporter_is_different_version

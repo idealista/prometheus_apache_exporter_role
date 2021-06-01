@@ -15,7 +15,7 @@
 
 - name: APACHE_EXPORTER | Set installed fact
   set_fact:
-    apache_exporter_is_installed: "{{ apache_exporter_is_installed_command.stdout }}"
+    apache_exporter_is_installed: "{{ apache_exporter_is_installed_command.stdout | bool }}"
 
 - name: APACHE_EXPORTER | Set same version fact
   set_fact:
