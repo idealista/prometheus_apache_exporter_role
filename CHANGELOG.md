@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 
 ## [Unreleased](https://github.com/idealista/prometheus_apache_exporter_role/tree/develop)
+
+## [2.0.1](https://github.com/idealista/prometheus_haproxy_exporter_role/tree/2.0.1)
+### [Full Changelog](https://github.com/idealista/prometheus_haproxy_exporter_role/compare/2.0.0...2.0.1)
+### Fixed
 - *[#11](https://github.com/idealista/prometheus_apache_exporter_role/issues/11) Fixed syntax error* @mbenabda
 
 ## [2.0.0](https://github.com/idealista/prometheus_haproxy_exporter_role/tree/2.0.0)
