@@ -11,6 +11,7 @@ galaxy_info:
       versions:
         - buster
         - stretch
+        - bullseye
   galaxy_tags:
     - monitoring
     - prometheus
