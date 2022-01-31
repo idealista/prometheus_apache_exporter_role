@@ -18,6 +18,9 @@ apache_exporter_user: prometheus
 apache_exporter_group: prometheus
 apache_exporter_private_tmp: true
 
+# Maximum number of files limit
+apache_exporter_max_files: 16384
+
 # start on boot
 apache_exporter_service_enabled: True
 # current state: started, stopped
