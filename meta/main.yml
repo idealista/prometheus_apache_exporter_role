@@ -4,7 +4,7 @@ galaxy_info:
   company: Idealista S.A.
   author: idealista
   description: Prometheus Apache exporter
-  min_ansible_version: 4.6.0
+  min_ansible_version: 5.2.0
   license: Apache 2.0
   platforms:
     - name: Debian

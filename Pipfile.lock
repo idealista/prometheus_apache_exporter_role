@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7d99bdce059d740fd6e0d5a9f5d1ee914636532f6fd806ff9d4fd034987495b4"
+            "sha256": "4e9efd845d198b33de082b58459403f9917d3c28a5f7fefa18400f9a2ef6bfb5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,10 +18,10 @@
     "default": {
         "ansible": {
             "hashes": [
-                "sha256:2955fcbf51367f8bd88c38a86f8be83d4fcd05f778afb4feed31abfe8dcff639"
+                "sha256:c6d448f229cb4a77a6026bd61bcd5bcf062f4f666f1ed24432ba043d145499cb"
             ],
             "index": "pypi",
-            "version": "==4.6.0"
+            "version": "==5.2.0"
         },
         "ansible-compat": {
             "hashes": [
@@ -33,10 +33,10 @@
         },
         "ansible-core": {
             "hashes": [
-                "sha256:b87188beacfac1bb6dc5cf65663f3c52e66e0f9990742db00a3dca71ebae2eee"
+                "sha256:bc79e1723a5a92cbc105d581b25b66840d15bb5f4c98925c936ef5a71f92e7c3"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
-            "version": "==2.11.7"
+            "markers": "python_version >= '3.8'",
+            "version": "==2.12.2"
         },
         "ansible-lint": {
             "hashes": [
@@ -536,7 +536,7 @@
                 "sha256:365ebcdbfb3aa8d4b0ed2490e0fbf7b886a39d14eb7ea5fb7aece950835e1eed",
                 "sha256:43e03d8eec12e21beaecc22c828a41c4247356414a12d5879834863d4ad53816"
             ],
-            "markers": "python_full_version >= '3.6.2' and python_full_version < '4.0.0'",
+            "markers": "python_version < '4' and python_full_version >= '3.6.2'",
             "version": "==11.1.0"
         },
         "ruamel.yaml": {
@@ -622,7 +622,7 @@
                 "sha256:000ca7f471a233c2251c6c7023ee85305721bfdf18621ebff4fd17a8653427ed",
                 "sha256:0e7c33d9a63e7ddfcb86780aac87befc2fbddf46c58dbb487e0855f7ceec283c"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_full_version < '4.0.0'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
             "version": "==1.26.8"
         },
         "wcmatch": {
@@ -643,10 +643,10 @@
         },
         "yamllint": {
             "hashes": [
-                "sha256:87d9462b3ed7e9dfa19caa177f7a77cd9888b3dc4044447d6ae0ab233bcd1324"
+                "sha256:3934dcde484374596d6b52d8db412929a169f6d9e52e20f9ade5bf3523d9b96e"
             ],
             "index": "pypi",
-            "version": "==1.26.1"
+            "version": "==1.26.3"
         }
     },
     "develop": {}

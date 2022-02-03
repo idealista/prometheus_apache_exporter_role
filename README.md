@@ -26,7 +26,7 @@ This role has been generated using the [cookiecutter](https://github.com/cookiec
 These instructions will get you a copy of the role for your ansible playbook. Once launched, it will install an [Prometheus Apache Exporter](https://github.com/Lusitaniae/apache_exporter) server in a Debian system.
 
 ### Prerequisities
-Ansible 4.6.0 version installed.
+Ansible 5.2.0 version installed.
 
 Molecule 3.5.x version installed.
 
@@ -80,7 +80,7 @@ Note: if you want to add colorized output (as previous versions of molecule), yo
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-4.6.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-5.2.0-green.svg)
 ![Molecule](https://img.shields.io/badge/molecule-3.5.2-green.svg)
 ![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)
 
