@@ -11,7 +11,7 @@ platforms:
   - name: apacheexporter
     groups:
       - apache_exporter
-    image: ${MOLECULE_DISTRO:-debian:buster-slim}
+    image: ${MOLECULE_DISTRO:-debian:bullseye-slim}
     privileged: false
     capabilities:
       - SYS_ADMIN

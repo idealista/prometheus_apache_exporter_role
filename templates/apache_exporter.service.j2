@@ -8,6 +8,7 @@ PrivateTmp={{ apache_exporter_private_tmp }}
 User={{ apache_exporter_user }}
 Group={{ apache_exporter_group }}
 RuntimeDirectory=apache_exporter
+LimitNOFILE={{ apache_exporter_max_files }}
 
 ExecStart={{ apache_exporter_install_path }}/apache_exporter {{ apache_exporter_command_args | join(" ") }}
 
