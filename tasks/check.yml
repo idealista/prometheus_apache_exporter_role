@@ -3,6 +3,7 @@
 - name: APACHE_EXPORTER | Check if Apache exporter already installed
   shell: '[ -x "$(command -v apache_exporter)" ] && echo "True" || echo "False"'
   register: apache_exporter_is_installed_command
+  check_mode: false
   changed_when: false
 
 - name: APACHE_EXPORTER | Apache exporter installed version
@@ -11,6 +12,7 @@
   args:
     executable: /bin/bash
   when: apache_exporter_is_installed_command
+  check_mode: false
   changed_when: false
 
 - name: APACHE_EXPORTER | Set installed fact
