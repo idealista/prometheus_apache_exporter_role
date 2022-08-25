@@ -5,7 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 
 ## [Unreleased](https://github.com/idealista/prometheus_apache_exporter_role/tree/develop)
-- * [#22](https://github.com/idealista/prometheus_apache_exporter_role/issues/22) - Allow run in check mode
+
+## [2.1.1](https://github.com/idealista/prometheus_apache_exporter_role/tree/2.1.1)
+### [Full Changelog](https://github.com/idealista/prometheus_apache_exporter_role/compare/2.1.0...2.1.1)
+### Added
+- * [#22](https://github.com/idealista/prometheus_apache_exporter_role/issues/22) - Allow run in check mode* @xshadow
 ## [2.1.0](https://github.com/idealista/prometheus_apache_exporter_role/tree/2.1.0)
 ### [Full Changelog](https://github.com/idealista/prometheus_apache_exporter_role/compare/2.0.1...2.1.0)
 ### Added
