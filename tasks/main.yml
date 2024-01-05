@@ -1,21 +1,20 @@
 ---
-
 - name: APACHE_EXPORTER | Check
-  include: check.yml
+  include_tasks: check.yml
   tags:
     - apache_exporter_check
 
 - name: APACHE_EXPORTER | Install
-  include: install.yml
+  include_tasks: install.yml
   tags:
     - apache_exporter_install
 
 - name: APACHE_EXPORTER | Configure
-  include: config.yml
+  include_tasks: config.yml
   tags:
     - apache_exporter_configure
 
 - name: APACHE_EXPORTER | Service
-  include: service.yml
+  include_tasks: service.yml
   tags:
     - apache_exporter_service
